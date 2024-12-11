@@ -41,7 +41,7 @@ module RspecApiDocumentation::DSL
       extended_parameters
       extract_route_parameters!
 
-      if http_method == :get && !query_string.blank?
+      if [:get, :delete].include?(http_method) && !query_string.blank?
         path_or_query += "?#{query_string}"
       else
         if respond_to?(:raw_post)
